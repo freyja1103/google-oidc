@@ -1,3 +1,3 @@
 # google-oidc
 
-Google アカウントで OpenID Connect を利用するサンプル
+Google の OpenID Connect を利用するサンプル
