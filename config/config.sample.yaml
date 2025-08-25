@@ -1,0 +1,5 @@
+client:
+  youtube:
+    id: ""
+    secret: ""
+    redirect_url: ""
