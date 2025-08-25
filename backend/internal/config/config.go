@@ -1,11 +1,11 @@
 package config
 
 type ClientConfig struct {
-	YouTube struct {
+	Google struct {
 		ID          string `yaml:"id"`
 		Secret      string `yaml:"secret"`
 		RedirectURL string `yaml:"redirect_url"`
-	} `yaml:"youtube"`
+	} `yaml:"Google"`
 }
 
 type Config struct {

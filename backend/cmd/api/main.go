@@ -29,9 +29,9 @@ func main() {
 	slog.SetDefault(logger)
 
 	googleConfig := &oauth2.Config{
-		ClientID:     conf.Client.YouTube.ID,
-		ClientSecret: conf.Client.YouTube.Secret,
-		RedirectURL:  conf.Client.YouTube.RedirectURL,
+		ClientID:     conf.Client.Google.ID,
+		ClientSecret: conf.Client.Google.Secret,
+		RedirectURL:  conf.Client.Google.RedirectURL,
 		Scopes: []string{
 			"openid",
 			"profile",
