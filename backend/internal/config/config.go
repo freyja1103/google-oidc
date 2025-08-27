@@ -5,7 +5,7 @@ type ClientConfig struct {
 		ID          string `yaml:"id"`
 		Secret      string `yaml:"secret"`
 		RedirectURL string `yaml:"redirect_url"`
-	} `yaml:"Google"`
+	} `yaml:"google"`
 }
 
 type Config struct {

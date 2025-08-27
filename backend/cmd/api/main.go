@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"google-oidc/internal/config"
 	"google-oidc/internal/handlers"
@@ -13,6 +14,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/coreos/go-oidc/v3/oidc"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"golang.org/x/oauth2"
@@ -46,11 +48,17 @@ func main() {
 		},
 	}
 
+	provider, err := oidc.NewProvider(context.Background(), "https://accounts.google.com")
+	if err != nil {
+		slog.Error("failed to create oidc provider", slog.Any("error", err))
+		return
+	}
+
 	googleAPI := google.NewGoogleAPI(googleConfig)
 
 	oauth2Repo := repositories.NewOAuthRepository(googleAPI)
 
-	oauth2Handler := handlers.NewOAuthHandler(googleConfig, oauth2Repo)
+	oauth2Handler := handlers.NewOAuthHandler(googleConfig, oauth2Repo, provider)
 
 	e := echo.New()
 	e.Use(
